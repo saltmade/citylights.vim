@@ -1,6 +1,9 @@
 # Citylights
 ## A beautiful dark theme designed with focus in mind
+_Note: This theme is under heavy development at present. Expect frequent
+changes until it is tuned properly._
 
+## Colors
 Yummygum hasn't codified a canonical color scheme, so I've used the Atom color variables instead. This gave me 17 colors, plus a couple extras used for white or highlights. I've done my best to create a sane mapping of this list to the typical 16 color codes allowed by terminals. I've also added some niceties for true color.
 
 I presently use OSX, neovim with true colors turned on, iTerm2, Operator Mono NerdFont, and focus on python and javascript development with markdown for documentation. You will find a bias toward this stack.
