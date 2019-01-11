@@ -378,10 +378,12 @@ exe "hi! MatchParen"     .s:fmt_undr   .s:fg_bluelt    .s:bg_none
 
 " vim syntax highlighting
 " ---------------------------------------------------------------------
-exe "hi! vimCommand"     .s:fmt_none   .s:fg_bluelt    .s:bg_none
+exe "hi! vimCommand"     .s:fmt_none   .s:fg_cyanlt    .s:bg_none
 exe "hi! vimFunc"        .s:fmt_none   .s:fg_cyanlt      .s:bg_none
 exe "hi! vimFuncName"    .s:fmt_none   .s:fg_cyanlt      .s:bg_none
 exe "hi! vimHighlight"   .s:fmt_none   .s:fg_base0     .s:bg_none
+exe "hi! vimHiBang"      .s:fmt_none   .s:fg_bluelt     .s:bg_none
+exe "hi! vimHiGroup"      .s:fmt_none  .s:fg_base00     .s:bg_none
 exe "hi! vimHiClear"     .s:fmt_none   .s:fg_base00    .s:bg_none
 exe "hi! vimLet"         .s:fmt_none   .s:fg_cyandk    .s:bg_none
 exe "hi! vimNotFunc"     .s:fmt_none   .s:fg_bluelt    .s:bg_none
