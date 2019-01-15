@@ -8,6 +8,9 @@ Yummygum hasn't codified a canonical color scheme, so I've used the Atom color v
 
 I presently use OSX, neovim with true colors turned on, iTerm2, Operator Mono NerdFont, and focus on python and javascript development with markdown for documentation. You will find a bias toward this stack.
 
+## Icons
+Citylights is also an icon theme, however I don't currently plan to port it as I
+like it less than Material icons, which are already a part of [Nerd Fonts](ryanoasis/nerd-fonts).
 
 ## Looking for something similar?
 More outrun? [Darcula](https://draculatheme.com/vim/)
@@ -15,7 +18,8 @@ More outrun? [Darcula](https://draculatheme.com/vim/)
 More purple? [Spacevim](https://github.com/colepeters/spacemacs-theme.vim)
 
 More vaporwave? [Ladies Night 2](http://color-themes.com/?view=theme&id=566065a4ddacef1b003edb63)
-Yes I realize this isn't Vim, but IntelliJ. The closest I've found though.
+Yes I realize this isn't Vim, but IntelliJ. If I ever port another theme this
+will likely be it.
 
 None of these? [Rainglow](https://rainglow.io/)
 
@@ -25,7 +29,7 @@ Taking on this conversion required me to learn a lot about how different termina
 ### Terminal Colors
 Terminals often allow the user to set the first 16 ANSI colors as they like, but
 restrict the other 17-256 to an existing palette. Neovim's terminal library
-(libvterm) is such a library, which is why we set only those 16 colors. This is
+(libvterm) is such a emulator, which is why we set only those 16 colors. This is
 further complicated by [how neovim handles true
 colors](https://github.com/vim/vim/issues/2353). This [article on 16 color
 setups](https://jeffkreeftmeijer.com/vim-16-color/) has a chart that helps a ton
