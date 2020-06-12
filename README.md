@@ -1,16 +1,10 @@
 # Citylights
 ## A beautiful dark theme designed with focus in mind
-_Note: This theme is under heavy development at present. Expect frequent
-changes until it is tuned properly._
 
 ## Colors
-Yummygum hasn't codified a canonical color scheme, so I've used the Atom color variables instead. This gave me 17 colors, plus a couple extras used for white or highlights. I've done my best to create a sane mapping of this list to the typical 16 color codes allowed by terminals. I've also added some niceties for true color.
+Yummygum hasn't codified a canonical color scheme, unless you count the ANSI term variables in the VSCode theme. That same file has 34 different colors, which is what I've attempted to map as closely as possible to vim color groups.
 
-I presently use OSX, neovim with true colors turned on, iTerm2, Operator Mono NerdFont, and focus on python and javascript development with markdown for documentation. You will find a bias toward this stack.
-
-## Icons
-Citylights is also an icon theme, however I don't currently plan to port it as I
-like it less than Material icons, which are already a part of [Nerd Fonts](ryanoasis/nerd-fonts).
+I presently use OSX, neovim with `termguicolors` on, inside Kitty. You will find a bias toward this stack.
 
 ## Looking for something similar?
 More outrun? [Darcula](https://draculatheme.com/vim/)
@@ -18,23 +12,22 @@ More outrun? [Darcula](https://draculatheme.com/vim/)
 More purple? [Spacevim](https://github.com/colepeters/spacemacs-theme.vim)
 
 More vaporwave? [Ladies Night 2](http://color-themes.com/?view=theme&id=566065a4ddacef1b003edb63)
-Yes I realize this isn't Vim, but IntelliJ. If I ever port another theme this
-will likely be it.
+TODO: Convert Ladies Night 2 to Vim from Intellij
 
 None of these? [Rainglow](https://rainglow.io/)
 
-## Learnings for the Lazy
-Taking on this conversion required me to learn a lot about how different terminal environments handle color as well as how color is described. Understanding why the file is structured how it is (which is mostly a rip off of Solarized's use of variables) requires a little background. So if you want to modify, extend or copy the file here's some info I found useful. This may be moved to a blog post, in which case I'll link it instead.
+## Differences with VSCode Citylights
+- VSC has a hollow cursor for insert mode. At the moment there isn't a way to set vim to a hollow cursor.
+- No line separator/gutter next to line numbers
+- 
 
-### Terminal Colors
-Terminals often allow the user to set the first 16 ANSI colors as they like, but
-restrict the other 17-256 to an existing palette. Neovim's terminal library
-(libvterm) is such a emulator, which is why we set only those 16 colors. This is
-further complicated by [how neovim handles true
-colors](https://github.com/vim/vim/issues/2353). This [article on 16 color
-setups](https://jeffkreeftmeijer.com/vim-16-color/) has a chart that helps a ton
-in understanding what the terminal colors map to. Of course there's also the
-peculiarity of using bright colors for bold...
+## Understanding Terminal Colors: a shameless plug
+For an overview of how terminal colors work so you can modify them yourself, check out [the blogpost](https://salt.ac/understanding-terminal-colors) I wrote while making this.
+
+### :Term Colors
+- Both Neovim and Vim use the terminal's 16 colors by default.
+- Neovim Truecolor (`set termguicolors`) requires you to set the `g:terminal_color_*` variables, [just as you have with your external terminal](https://github.com/neovim/neovim/issues/4696#issuecomment-530153777).
+- Vim's Truecolor terminal support is [a single variable that uses an array](https://github.com/vim/vim/pull/2747): `g:terminal_ansi_colors`
 
 ### Italics
 # TODO write up on italics settings for Operator Mono
@@ -56,7 +49,3 @@ These color schemes and articles helped me put this together:
   docs](http://vimdoc.sourceforge.net/htmldoc/syntax.html#xterm-color)
 + https://github.com/neovim/neovim/issues/7018
 
-## Research TODOs
-- [] Why do terminals 8 through 16 for bold and lighter colors?
-- [] What is ANSI and what does it have to do with the color settings?
-- [] What's with all the conditionals in Solarized?

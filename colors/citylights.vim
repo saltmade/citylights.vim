@@ -1,44 +1,40 @@
 " Name:     Citylights vim colorscheme
 " Author:   Jeff Heaton <jeff@jgheaton.com>
 "           (adapted from Yummygum's citylights <citylights.xyz>)
-" URL:      http://github.com/jefheaton/citylights.vim
+" URL:      http://github.com/saltdotac/citylights.vim
 " License:  OSI approved MIT license (see end of this file)
 " Created:  In neon dreams
-" Modified: 2019 Jan 05
+" Modified: 2020 May 30
 "
-" TODO add citylights icon support via https://github.com/ryanoasis/vim-devicons
-" !IMPORTANT: Much of the syntax used is taken from [vim polyglot](). You should
-" install it if you intend to use the theme
 " ---------------------------------------------------------------------
 " COLOR VALUES
 " ---------------------------------------------------------------------
-" Download palettes and files from: http://ethanschoonover.com/solarized
+" Hex values are canonical because it's what's provided by YG. The VSCode
+" version of the colorscheme provides 8 terminal colors, a terminal bg and fg,
+" and an additional 24 colors across the app (for a total of 34 colors). I have
+" selected from the additional colors to fill out 16 ANSI colors for a
+" 256-color environment, but 24-bit color is what the authors had in mind.
 "
-" Hex values are canonical at the moment (because it's what's provided by YG)
-" TODO change canonical values to L\*a\*b (White D65, Reference 50)
-" Colors are appended lt for light and dk for dark. See readme for visuals.
+" You can use the following table to fill out your terminal settings:
 "
-" CITYLIGHTS HEX      XTERM/HEX   HSB         NAME*
-" ---------- -------  ----------- ----------- ----------
-" base03     #1D252C  235 #262626 208  34  17 black
-" base02     #333F4A  237 #3a3a3a 201  21  29 brblack
-" base01     #41505E  239 #4e4e4e 209  31  37
-" base00     #B7C5D3  244 #767676 210  13  83 brwhite
-" base0      #718CA1  254 #e4e4e4 206  30  63 white
-" cyanlt     #70E1E8   80 #5fd7d7 184  52  91 brcyan
-" cyan       #33CED8   37 #00afaf 184  76  85
-" cyandk     #008B94   30 #008787 184 100  58 cyan
-" bluelt     #5EC4FF   81 #0087ff 202  63 100 brblue
-" blue       #68A1F0   75 #0087ff 215  57  94
-" bluedk     #539AFC   69 #0087ff 215  67  99 blue
-" redlt      #E27E8D  174 #af005f 331  44  89
-" red        #D95468  167 #af005f 351  61  85 red
-" reddk      #B62D65  125 #af005f 335  75  71
-" orangelt   #EBBF83  216 #d75f00  35  44  92 brcyan
-" orangedk   #D98E48  173 #d75f00  29  67  85 orangelt
-" green      #8BD49C  115 #5f8700 134  34  83 green
-
-" *these are the names of the first 16 ANSI colors terminals allow you to change
+" CITYLIGHTS HEX      XTERM/HEX    X11 Name             
+" ---------- -------  -----------  ---------------------
+" black      #171d23  235 #262626  Grey15               
+" brblack    #41505e  239 #708090  SlateGray            
+" white      #b7c5d3  254 #b0c4de  LightSteelBlue       
+" brwhite    #ffffff  244 #ffffff  White                
+" cyan       #008b94   30 #008787  Turquoise4           
+" brcyan     #70e1e8   80 #5fd7d7  MediumTurquoise      
+" blue       #539afc   69 #5f87ff  CornflowerBlue       
+" brblue     #5ec4ff   81 #87cefa  LightSkyBlue         
+" red        #ee3a43    9 #ff0000  Red                  
+" brred      #d95468  211 #ff87af  PaleVioletRed1       
+" magenta    #b62d65  125 #af005f  DeepPink4            
+" brmagenta  #e27e8d  204 #db7093  PaleVioletRed        
+" yellow     #d98e48  172 #cd853f  Peru/Orange3         
+" bryellow   #ebbf83  180 #deb887  BurlyWood/Tan        
+" green      #8bd49c  119 #90ee90  LightGreen           
+" brgreen    #3ad900   82 #7cfc00  LawnGreen/Chartreuse2
 
 " Colorscheme initialization
 " " ---------------------------------------------------------------------
@@ -48,54 +44,9 @@ if exists("syntax_on")
 endif
 let colors_name = "citylights"
 
-" GUI & CSApprox hexadecimal palettes
+" GUI hexadecimal palettes
 " ---------------------------------------------------------------------
 "
-" Set both gui and terminal color values in separate conditional statements
-" Due to possibility that CSApprox is running
-let s:none = "NONE"
-
-" Prefer neovim termguicolors, but support gui_running
-if (has('termguicolors') && &termguicolors) || has('gui_running')
-  let s:vmode = "gui"
-  let s:base03    = "#1D252C"
-  let s:base02    = "#333F4A"
-  let s:base01    = "#41505E"
-  let s:base00    = "#B7C5D3"
-  let s:base0     = "#718CA1"
-  let s:cyanlt    = "#70E1E8"
-  let s:cyan      = "#33CED8"
-  let s:cyandk    = "#008B94"
-  let s:bluelt    = "#5EC4FF"
-  let s:blue      = "#68A1F0"
-  let s:bluedk    = "#539AFC"
-  let s:redlt     = "#E27E8D"
-  let s:red       = "#D95468"
-  let s:reddk     = "#B62D65"
-  let s:orangelt  = "#EBBF83"
-  let s:orangedk  = "#D98E48"
-  let s:green     = "#8BD49C"
-else " 256 xterm colors as backup
-  let s:vmode     = "cterm"
-  let s:base03    = "235"
-  let s:base02    = "237"
-  let s:base01    = "239"
-  let s:base00    = "251"
-  let s:base0     = "67"
-  let s:cyanlt    = "80"
-  let s:cyan      = "37"
-  let s:cyandk    = "30"
-  let s:bluelt    = "81"
-  let s:blue      = "75"
-  let s:bluedk    = "69"
-  let s:redlt     = "174"
-  let s:red       = "167"
-  let s:reddk     = "125"
-  let s:orangelt  = "216"
-  let s:orangedk  = "173"
-  let s:green     = "115"
-endif
-
 " Neovim terminal colours
 if has("nvim")
   let g:terminal_color_0 =  "#1D252C" " black
@@ -141,276 +92,134 @@ elseif has('terminal')
         \ ]
 endif
 
-" Formatting options and null values for passthrough effect "
-" ---------------------------------------------------------------------
-    let s:back            = s:base03
-    let s:none            = "NONE"
-    let s:t_none          = "NONE"
-    let s:n               = "NONE"
-    let s:c               = ",undercurl"
-    let s:r               = ",reverse"
-    let s:s               = ",standout"
-    let s:b               = ",bold"
-    let s:u               = ",underline"
-    let s:i               = ",italic"
-
-" Highlighting primitives"
-" TODO convert primitives to color
-" You'll note the use of exe in this section to use all the variables
-" we've developed
-" ---------------------------------------------------------------------
-exe "let s:bg_none      = ' ".s:vmode."bg=".s:none    ."'"
-exe "let s:bg_back      = ' ".s:vmode."bg=".s:back    ."'"
-exe "let s:bg_base03    = ' ".s:vmode."bg=".s:base03  ."'"
-exe "let s:bg_base02    = ' ".s:vmode."bg=".s:base02  ."'"
-exe "let s:bg_base01    = ' ".s:vmode."bg=".s:base01  ."'"
-exe "let s:bg_base00    = ' ".s:vmode."bg=".s:base00  ."'"
-exe "let s:bg_base0     = ' ".s:vmode."bg=".s:base0   ."'"
-exe "let s:bg_cyanlt    = ' ".s:vmode."bg=".s:cyanlt  ."'"
-exe "let s:bg_cyan      = ' ".s:vmode."bg=".s:cyan    ."'"
-exe "let s:bg_cyandk    = ' ".s:vmode."bg=".s:cyandk  ."'"
-exe "let s:bg_bluelt    = ' ".s:vmode."bg=".s:bluelt  ."'"
-exe "let s:bg_blue      = ' ".s:vmode."bg=".s:blue    ."'"
-exe "let s:bg_bluedk    = ' ".s:vmode."bg=".s:bluedk  ."'"
-exe "let s:bg_redlt     = ' ".s:vmode."bg=".s:redlt   ."'"
-exe "let s:bg_red       = ' ".s:vmode."bg=".s:red     ."'"
-exe "let s:bg_reddk     = ' ".s:vmode."bg=".s:reddk   ."'"
-exe "let s:bg_orangelt  = ' ".s:vmode."bg=".s:orangelt."'"
-exe "let s:bg_orangedk  = ' ".s:vmode."bg=".s:orangedk."'"
-exe "let s:bg_green     = ' ".s:vmode."bg=".s:green   ."'"
-
-exe "let s:fg_none      = ' ".s:vmode."fg=".s:none    ."'"
-exe "let s:fg_back      = ' ".s:vmode."fg=".s:back    ."'"
-exe "let s:fg_base03    = ' ".s:vmode."fg=".s:base03  ."'"
-exe "let s:fg_base02    = ' ".s:vmode."fg=".s:base02  ."'"
-exe "let s:fg_base01    = ' ".s:vmode."fg=".s:base01  ."'"
-exe "let s:fg_base00    = ' ".s:vmode."fg=".s:base00  ."'"
-exe "let s:fg_base0     = ' ".s:vmode."fg=".s:base0   ."'"
-exe "let s:fg_cyanlt    = ' ".s:vmode."fg=".s:cyanlt  ."'"
-exe "let s:fg_cyan      = ' ".s:vmode."fg=".s:cyan    ."'"
-exe "let s:fg_cyandk    = ' ".s:vmode."fg=".s:cyandk  ."'"
-exe "let s:fg_bluelt    = ' ".s:vmode."fg=".s:bluelt  ."'"
-exe "let s:fg_blue      = ' ".s:vmode."fg=".s:blue    ."'"
-exe "let s:fg_bluedk    = ' ".s:vmode."fg=".s:bluedk  ."'"
-exe "let s:fg_redlt     = ' ".s:vmode."fg=".s:redlt   ."'"
-exe "let s:fg_red       = ' ".s:vmode."fg=".s:red     ."'"
-exe "let s:fg_reddk     = ' ".s:vmode."fg=".s:reddk   ."'"
-exe "let s:fg_orangelt  = ' ".s:vmode."fg=".s:orangelt."'"
-exe "let s:fg_orangedk  = ' ".s:vmode."fg=".s:orangedk."'"
-exe "let s:fg_green     = ' ".s:vmode."fg=".s:green   ."'"
-
-exe "let s:fmt_none     = ' ".s:vmode."=NONE".          " term=NONE".    "'"
-exe "let s:fmt_bold     = ' ".s:vmode."=NONE".s:b.      " term=NONE".s:b."'"
-exe "let s:fmt_bldi     = ' ".s:vmode."=NONE".s:b.s:i.  " term=NONE".s:b.s:i."'"
-exe "let s:fmt_undr     = ' ".s:vmode."=NONE".s:u.      " term=NONE".s:u."'"
-exe "let s:fmt_undb     = ' ".s:vmode."=NONE".s:u.s:b.  " term=NONE".s:u.s:b."'"
-exe "let s:fmt_undi     = ' ".s:vmode."=NONE".s:u.s:i.  " term=NONE".s:u.s:i."'"
-exe "let s:fmt_curl     = ' ".s:vmode."=NONE".s:c.      " term=NONE".s:c."'"
-exe "let s:fmt_ital     = ' ".s:vmode."=NONE".s:i.      " term=NONE".s:i."'"
-exe "let s:fmt_stnd     = ' ".s:vmode."=NONE".s:s.      " term=NONE".s:s."'"
-exe "let s:fmt_revr     = ' ".s:vmode."=NONE".s:r.      " term=NONE".s:r."'"
-exe "let s:fmt_revb     = ' ".s:vmode."=NONE".s:r.s:b. " term=NONE".s:r.s:b."'"
-
-if has("gui_running")
-  exe "let s:sp_none      = ' guisp=".s:none     ."'"
-  exe "let s:sp_back      = ' guisp=".s:back     ."'"
-  exe "let s:sp_base03    = ' guisp=".s:base03   ."'"
-  exe "let s:sp_base02    = ' guisp=".s:base02   ."'"
-  exe "let s:sp_base01    = ' guisp=".s:base01   ."'"
-  exe "let s:sp_base00    = ' guisp=".s:base00   ."'"
-  exe "let s:sp_base0     = ' guisp=".s:base0    ."'"
-  exe "let s:sp_cyanlt    = ' guisp=".s:cyanlt   ."'"
-  exe "let s:sp_cyan      = ' guisp=".s:cyan     ."'"
-  exe "let s:sp_cyandk    = ' guisp=".s:cyandk   ."'"
-  exe "let s:sp_bluelt    = ' guisp=".s:bluelt   ."'"
-  exe "let s:sp_blue      = ' guisp=".s:blue     ."'"
-  exe "let s:sp_bluedk    = ' guisp=".s:bluedk   ."'"
-  exe "let s:sp_redlt     = ' guisp=".s:redlt    ."'"
-  exe "let s:sp_red       = ' guisp=".s:red      ."'"
-  exe "let s:sp_reddk     = ' guisp=".s:reddk    ."'"
-  exe "let s:sp_orangelt  = ' guisp=".s:orangelt ."'"
-  exe "let s:sp_orangedk  = ' guisp=".s:orangedk ."'"
-  exe "let s:sp_green     = ' guisp=".s:green    ."'"
-else
-  let s:sp_none      = ""
-  let s:sp_back      = ""
-  let s:sp_base03    = ""
-  let s:sp_base02    = ""
-  let s:sp_base01    = ""
-  let s:sp_base00    = ""
-  let s:sp_base0     = ""
-  let s:sp_cyanlt    = ""
-  let s:sp_cyan      = ""
-  let s:sp_cyandk    = ""
-  let s:sp_bluelt    = ""
-  let s:sp_blue      = ""
-  let s:sp_bluedk    = ""
-  let s:sp_redlt     = ""
-  let s:sp_red       = ""
-  let s:sp_reddk     = ""
-  let s:sp_orangelt  = ""
-  let s:sp_orangedk  = ""
-  let s:sp_green     = ""
-endif
+" Prefer neovim termguicolors, but support gui_running
+if (has('termguicolors') && &termguicolors) || has('gui_running')
 
 " Basic highlighting"{{{
-" TODO match highlighting to Agreco's conversion
 " ---------------------------------------------------------------------
 " note that link syntax, to avoid duplicate configuration, doesn't work with the
 " exe compiled formats
 
-exe "hi! Normal"         .s:fmt_none   .s:fg_base00  .s:bg_back
+hi! Normal         guifg=#B7C5D3 guibg=#1D252C
 
-exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
-"       *Comment         any comment
+hi! Comment        gui=italic guifg=#41505E guibg=None
+"   *Comment       any comment
 
-exe "hi! Constant"       .s:fmt_none   .s:fg_none   .s:bg_none
-"       *Constant        this groups is overwritten by type
-"        Character       a character constant: 'c', '\n'
-exe "hi! String"         .s:fmt_none   .s:fg_bluedk .s:bg_none
-"        String          a string constant: "this is a string"
-exe "hi! Number"         .s:fmt_none    .s:fg_redlt .s:bg_none
-"        Number          a number constant: 234, 0xff
-hi! link Boolean Number
-"        Boolean         a boolean constant: TRUE, false
-hi! link Float Number
-"        Float           a floating point constant: 2.3e10
+hi! Constant       guifg=#e27e8d guibg=None
+"   *Constant        this groups is overwritten by type
+"    Character       a character constant: 'c', '\n'
+"    Number          a number constant: 234, 0xff
+"    Boolean         a boolean constant: TRUE, false
+"    Float           a floating point constant: 2.3e10
 
-exe "hi! Identifier"     .s:fmt_none   .s:fg_cyandk   .s:bg_none
-"       *Identifier      any variable name
-"        Function        function name (also: methods for classes)
+hi! String         guifg=#68A1F0 guibg=None
+"   String          a string constant: "this is a string"
+
+hi! Identifier     guifg=#718CA1 guibg=None
+"   *Identifier      any variable name
 "
-exe "hi! Statement"      .s:fmt_none   .s:fg_bluelt  .s:bg_none
-"       *Statement       any statement
-"        Conditional     if, then, else, endif, switch, etc.
-"        Repeat          for, do, while, etc.
-"        Label           case, default, etc.
-"        Operator        "sizeof", "+", "*", etc.
-"        Keyword         any other keyword
-"        Exception       try, catch, throw
+hi! Function       guifg=#70E1E8 guibg=None
+"    Function        function name (also: methods for classes)
+"
+hi! Statement      guifg=#5ec4ff guibg=None
+"   *Statement       any statement
+"    Conditional     if, then, else, endif, switch, etc.
+"    Repeat          for, do, while, etc.
+"    Label           case, default, etc.
+"    Operator        "sizeof", "+", "*", etc.
+"    Keyword         any other keyword
+"    Exception       try, catch, throw
 
-exe "hi! PreProc"        .s:fmt_none   .s:fg_bluelt .s:bg_none
-"       *PreProc         generic Preprocessor
-"        Include         preprocessor #include
-"        Define          preprocessor #define
-"        Macro           same as Define
-"        PreCondit       preprocessor #if, #else, #endif, etc.
+" VSCode citylights appears to make no reference to preproc
+hi! PreProc        guifg=#5ec4ff guibg=None
+"   *PreProc         generic Preprocessor
+"    Include         preprocessor #include
+"    Define          preprocessor #define
+"    Macro           same as Define
+"    PreCondit       preprocessor #if, #else, #endif, etc.
 
-exe "hi! Type"           .s:fmt_none   .s:fg_none .s:bg_none
-"       *Type            int, long, char, etc.
-"        StorageClass    static, register, volatile, etc.
-"        Structure       struct, union, enum, etc.
-"        Typedef         A typedef
+hi! Type           guifg=#008B94 guibg=None
+"   *Type            int, long, char, etc.
+"    StorageClass    static, register, volatile, etc.
+"    Structure       struct, union, enum, etc.
+"    Typedef         A typedef
 
-exe "hi! Special"        .s:fmt_none   .s:fg_base00    .s:bg_none
-"       *Special         any special symbol
-"        SpecialChar     special character in a constant
-"        Tag             you can use CTRL-] on this
-"        Delimiter       character that needs attention
-"        SpecialComment  special things inside a comment
-"        Debug           debugging statements
+hi! Special       guifg=#718CA1 guibg=None
+"   *Special         any special symbol
+"    SpecialChar     special character in a constant
+"    Tag             you can use CTRL-] on this
+"    Delimiter       character that needs attention
+"    SpecialComment  special things inside a comment
+"    Debug           debugging statements
 
-exe "hi! Underlined"     .s:fmt_undr   .s:fg_none .s:bg_none
-"       *Underlined      text that stands out, HTML links
+hi! Underlined     gui=underline guifg=#539afc guibg=None
+"   *Underlined      text that stands out, HTML links
 
-exe "hi! Ignore"         .s:fmt_none   .s:fg_none   .s:bg_none
-"       *Ignore          left blank, hidden  |hl-Ignore|
+hi! Ignore         gui=None guifg=None guibg=None
+"   *Ignore          left blank, hidden  |hl-Ignore|
 
-exe "hi! Error"          .s:fmt_curl   .s:fg_red    .s:bg_none
-"       *Error           any erroneous construct
+hi! Error          gui=undercurl guifg=#e27e8d guibg=None
+"   *Error           any erroneous construct
 
-exe "hi! Todo"           .s:fmt_revb   .s:fg_base01 .s:bg_none
-"       *Todo            anything that needs extra attention; mostly the
-"                        keywords TODO FIXME and XXX
+hi! Todo           gui=None guifg=None guibg=None
+"   *Todo            anything that needs extra attention; mostly the
+"                    keywords TODO FIXME and XXX
 "
 "}}}
 
 " Extended highlighting "{{{
 " ---------------------------------------------------------------------
-"  TODO Missing or Noncanonical: SpecialKey, Nontext, Statusline, ErrorMsg, MoreMsg, Modemsg, LineNr, Question, VertSplit, VerticalNOS, WarningMsg, WildMenu, FoldColumn, SignColumn, Conceal, Spell*, PmenuSel, PmenuSBar, PmenuThumb, Tab*, Cursor*, ColorColumn,
 "  TODO Improve diff settings
-exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
-exe "hi! Conceal"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_bluedk
+"  TODO Add linenr gutter border
+"hi! ColorColumn    .s:fmt_none   .s:fg_none   .s:bg_base02
+"hi! Conceal        .s:fmt_none   .s:fg_blue   .s:bg_none
+hi! Cursor         guifg=#953B01 guibg=#77c3fa
+hi! link iCursor Cursor
 hi! link lCursor Cursor
-exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
-exe "hi! CursorLine"     .s:fmt_undr   .s:fg_none   .s:bg_base02
-exe "hi! CursorLineNR"   .s:fmt_none   .s:fg_base00 .s:bg_base03
-exe "hi! DiffAdd"        .s:fmt_none   .s:fg_none  .s:bg_none
-exe "hi! DiffChange"     .s:fmt_bold   .s:fg_none    .s:bg_none
-exe "hi! DiffDelete"     .s:fmt_bold   .s:fg_base01  .s:bg_none
-exe "hi! DiffText"       .s:fmt_bold   .s:fg_base01  .s:bg_none
-exe "hi! Directory"      .s:fmt_none   .s:fg_green  .s:bg_none
-exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_redlt  .s:bg_red
-exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base0   .s:bg_base02
-exe "hi! Folded"         .s:fmt_undb   .s:fg_base01  .s:bg_base02  .s:sp_base03
-exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_base03 .s:bg_bluedk
-exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base03
-exe "hi! MatchParen"     .s:fmt_undr   .s:fg_bluelt    .s:bg_none
-exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! NonText"        .s:fmt_none   .s:fg_base01 .s:bg_none
-exe "hi! Pmenu"          .s:fmt_none   .s:fg_none   .s:bg_none
-exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base02  .s:bg_base0
-exe "hi! PmenuSel"       .s:fmt_undr   .s:fg_none   .s:bg_base03
-exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03
-exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
-exe "hi! Search"         .s:fmt_undr   .s:fg_none .s:bg_none
-exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0 .s:bg_base03
-exe "hi! SpecialKey"     .s:fmt_none   .s:fg_base01 .s:bg_none
-exe "hi! SpellBad"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_red
-exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_reddk
-exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_orangelt
-exe "hi! SpellRare"      .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_cyan
-exe "hi! StatusLine"     .s:fmt_none   .s:fg_base0  .s:bg_base02
-exe "hi! StatusLineNC"   .s:fmt_none   .s:fg_base0 .s:bg_base02 .s:fmt_none
-exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base03
-exe "hi! TabLineFill"    .s:fmt_undr   .s:fg_base0  .s:bg_base03
-exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_blue   .s:bg_base03
-exe "hi! Title"          .s:fmt_bold   .s:fg_base0   .s:bg_none
-exe "hi! VertSplit"  .s:fmt_revb  .s:fg_base00 .s:bg_base02
-exe "hi! Visual"         .s:fmt_none   .s:fg_none   .s:bg_base02 .s:fmt_none
-exe "hi! VisualNOS"      .s:fmt_stnd   .s:fg_none    .s:bg_base02 .s:fmt_revb
-exe "hi! WarningMsg"     .s:fmt_bold   .s:fg_red     .s:bg_none
-exe "hi! WildMenu"       .s:fmt_none   .s:fg_base01  .s:bg_base02 .s:fmt_revb
+"hi! CursorColumn   .s:fmt_none   .s:fg_none   .s:bg_base02
+hi! CursorLine     guifg=None guibg=#28313a
+hi! CursorLineNR   gui=None guifg=#41505e guibg=None
+hi! DiffAdd        guifg=None guibg=#2A462C
+hi! link DiffChange DiffAdd
+hi! DiffDelete     guifg=None guibg=#562D32
+"hi! DiffText       .s:fmt_bold   .s:fg_base01  .s:bg_none
+"hi! Directory      .s:fmt_none   .s:fg_green  .s:bg_none
+hi! ErrorMsg       gui=None guifg=#e27e8d guibg=None
+hi! EndOfBuffer    gui=None guifg=#1D252C guibg=None
+"hi! FoldColumn     .s:fmt_none   .s:fg_base0   .s:bg_base02
+"hi! Folded         .s:fmt_undb   .s:fg_base01  .s:bg_base02  .s:sp_base03
+hi! IncSearch      gui=None guifg=None guibg=#707B87
+hi! LineNr         gui=None guifg=#41505E guibg=None
+hi! MatchParen     gui=None guifg=None guibg=#4e6e99
+"hi! ModeMsg        .s:fmt_none   .s:fg_blue   .s:bg_none
+"hi! MoreMsg        .s:fmt_none   .s:fg_blue   .s:bg_none
+"hi! NonText        .s:fmt_none   .s:fg_base01 .s:bg_none
+hi! Pmenu          gui=None guifg=#B7C5D3 guibg=#15232d
+hi! PmenuSbar      gui=None guifg=#2B3945 guibg=#15232d
+hi! PmenuSel       gui=None guifg=None    guibg=#28323a
+"hi! PmenuThumb     .s:fmt_none   .s:fg_base0  .s:bg_base03
+"hi! Question       .s:fmt_bold   .s:fg_cyan   .s:bg_none
+hi! Search         gui=None guifg=None guibg=#3A434C
+hi! link SignColumn Normal
+"hi! SpecialKey     .s:fmt_none   .s:fg_base01 .s:bg_none
+hi! SpellBad       gui=undercurl guisp=#e27e8d
+hi! link SpellCap SpellBad
+hi! link SpellLocal SpellBad
+hi! link SpellRare SpellBad
+hi! StatusLine     gui=None guifg=#b7c5d3 guibg=#171d23
+hi! link StatusLineNC StatusLine
+hi! TabLine        gui=underline guifg=#b7c5d3 guibg=#171d23 guisp=#171d23
+hi! TabLineFill    gui=underline guifg=None guibg=#171d23 guisp=#171d23
+hi! TabLineSel     gui=None guifg=#fff guibg=#1D252C
+hi! TermCursor      gui=None guifg=#008B94 guibg=#008B94
+hi! Title          gui=bold guifg=#70E1E8 guibg=None
+hi! VertSplit      gui=None guifg=#1D252C guibg=None
+hi! link Visual CursorLine
+"hi! VisualNOS      .s:fmt_stnd   .s:fg_none    .s:bg_base02 .s:fmt_revb
+"hi! WarningMsg     .s:fmt_bold   .s:fg_red     .s:bg_none
+hi! link WildMenu PmenuSel
 
-" vim syntax highlighting
-" ---------------------------------------------------------------------
-exe "hi! vimCommand"     .s:fmt_none   .s:fg_cyanlt    .s:bg_none
-exe "hi! vimFunc"        .s:fmt_none   .s:fg_cyanlt      .s:bg_none
-exe "hi! vimFuncName"    .s:fmt_none   .s:fg_cyanlt      .s:bg_none
-exe "hi! vimHighlight"   .s:fmt_none   .s:fg_base0     .s:bg_none
-exe "hi! vimHiBang"      .s:fmt_none   .s:fg_bluelt     .s:bg_none
-exe "hi! vimHiGroup"      .s:fmt_none  .s:fg_base00     .s:bg_none
-exe "hi! vimHiClear"     .s:fmt_none   .s:fg_base00    .s:bg_none
-exe "hi! vimLet"         .s:fmt_none   .s:fg_cyandk    .s:bg_none
-exe "hi! vimNotFunc"     .s:fmt_none   .s:fg_bluelt    .s:bg_none
-exe "hi! vimSynType"     .s:fmt_none   .s:fg_base00    .s:bg_none
-exe "hi! vimVar"         .s:fmt_none   .s:fg_base0     .s:bg_none
+hi Terminal        guifg=#B7C5D3 guibg=#171d23
+autocmd TermOpen * setlocal winhighlight=Normal:Terminal
 
-" html syntax highlighting
-" ---------------------------------------------------------------------
-exe "hi! htmlArg"        .s:fmt_none   .s:fg_cyan      .s:bg_none
-exe "hi! htmlEndTag"     .s:fmt_none   .s:fg_base0    .s:bg_none
-exe "hi! htmlH2"         .s:fmt_none   .s:fg_base00    .s:bg_none
-exe "hi! htmlTag"        .s:fmt_none   .s:fg_base0    .s:bg_none
-exe "hi! htmlTagName"    .s:fmt_none   .s:fg_cyandk    .s:bg_none
-
-" javascript syntax highlighting
-" ---------------------------------------------------------------------
-exe "hi! jsArrowFunction" .s:fmt_none   .s:fg_cyandk     .s:bg_none
-exe "hi! jsAsyncKeyword" .s:fmt_none   .s:fg_cyandk     .s:bg_none
-exe "hi! jsExportDefault" .s:fmt_none   .s:fg_bluelt     .s:bg_none
-exe "hi! jsFunction"     .s:fmt_none   .s:fg_cyandk     .s:bg_none
-exe "hi! jsFuncArgs"     .s:fmt_none   .s:fg_orangelt     .s:bg_none
-exe "hi! jsFuncCall"     .s:fmt_none   .s:fg_cyanlt     .s:bg_none
-exe "hi! jsModuleKeyword" .s:fmt_none   .s:fg_base00     .s:bg_none
-exe "hi! jsString"       .s:fmt_none   .s:fg_blue     .s:bg_none
-exe "hi! jsStorageClass" .s:fmt_none   .s:fg_cyandk     .s:bg_none
-exe "hi! jsVariableDef"  .s:fmt_none   .s:fg_green     .s:bg_none
-
-" handlebars syntax highlighting
-" ---------------------------------------------------------------------
-exe "hi! mustacheHandlebars"  .s:fmt_none   .s:fg_base0   .s:bg_none
-exe "hi! mustacheOperators"  .s:fmt_none   .s:fg_cyandk   .s:bg_none
-exe "hi! mustacheParam"  .s:fmt_none   .s:fg_orangelt   .s:bg_none
+endif
