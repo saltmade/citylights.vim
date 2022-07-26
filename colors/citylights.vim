@@ -22,7 +22,7 @@
 " black      #171d23  235 #262626  Grey15               
 " brblack    #41505e  239 #708090  SlateGray            
 " white      #b7c5d3  254 #b0c4de  LightSteelBlue       
-" brwhite    #ffffff  244 #ffffff  White                
+" brwhite    #FFFFFF  244 #FFFFFF  White                
 " cyan       #008b94   30 #008787  Turquoise4           
 " brcyan     #70e1e8   80 #5fd7d7  MediumTurquoise      
 " blue       #539afc   69 #5f87ff  CornflowerBlue       
@@ -102,26 +102,26 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
 
 hi! Normal         guifg=#B7C5D3 guibg=#1D252C
 
-hi! Comment        gui=italic guifg=#41505E guibg=None
+hi! Comment        gui=italic guifg=#41505E guibg=NONE
 "   *Comment       any comment
 
-hi! Constant       guifg=#e27e8d guibg=None
+hi! Constant       guifg=#e27e8d guibg=NONE
 "   *Constant        this groups is overwritten by type
 "    Character       a character constant: 'c', '\n'
 "    Number          a number constant: 234, 0xff
 "    Boolean         a boolean constant: TRUE, false
 "    Float           a floating point constant: 2.3e10
 
-hi! String         guifg=#68A1F0 guibg=None
+hi! String         guifg=#68A1F0 guibg=NONE
 "   String          a string constant: "this is a string"
 
-hi! Identifier     guifg=#718CA1 guibg=None
+hi! Identifier     guifg=#718CA1 guibg=NONE
 "   *Identifier      any variable name
 "
-hi! Function       guifg=#70E1E8 guibg=None
+hi! Function       guifg=#70E1E8 guibg=NONE
 "    Function        function name (also: methods for classes)
 "
-hi! Statement      guifg=#5ec4ff guibg=None
+hi! Statement      guifg=#5ec4ff guibg=NONE
 "   *Statement       any statement
 "    Conditional     if, then, else, endif, switch, etc.
 "    Repeat          for, do, while, etc.
@@ -131,20 +131,20 @@ hi! Statement      guifg=#5ec4ff guibg=None
 "    Exception       try, catch, throw
 
 " VSCode citylights appears to make no reference to preproc
-hi! PreProc        guifg=#5ec4ff guibg=None
+hi! PreProc        guifg=#5ec4ff guibg=NONE
 "   *PreProc         generic Preprocessor
 "    Include         preprocessor #include
 "    Define          preprocessor #define
 "    Macro           same as Define
 "    PreCondit       preprocessor #if, #else, #endif, etc.
 
-hi! Type           guifg=#008B94 guibg=None
+hi! Type           guifg=#008B94 guibg=NONE
 "   *Type            int, long, char, etc.
 "    StorageClass    static, register, volatile, etc.
 "    Structure       struct, union, enum, etc.
 "    Typedef         A typedef
 
-hi! Special       guifg=#718CA1 guibg=None
+hi! Special       guifg=#718CA1 guibg=NONE
 "   *Special         any special symbol
 "    SpecialChar     special character in a constant
 "    Tag             you can use CTRL-] on this
@@ -152,16 +152,16 @@ hi! Special       guifg=#718CA1 guibg=None
 "    SpecialComment  special things inside a comment
 "    Debug           debugging statements
 
-hi! Underlined     gui=underline guifg=#539afc guibg=None
+hi! Underlined     gui=underline guifg=#539afc guibg=NONE
 "   *Underlined      text that stands out, HTML links
 
-hi! Ignore         gui=None guifg=None guibg=None
+hi! Ignore         gui=NONE guifg=NONE guibg=NONE
 "   *Ignore          left blank, hidden  |hl-Ignore|
 
-hi! Error          gui=undercurl guifg=#e27e8d guibg=None
+hi! Error          gui=undercurl guifg=#e27e8d guibg=NONE
 "   *Error           any erroneous construct
 
-hi! Todo           gui=None guifg=None guibg=None
+hi! Todo           gui=NONE guifg=NONE guibg=NONE
 "   *Todo            anything that needs extra attention; mostly the
 "                    keywords TODO FIXME and XXX
 "
@@ -177,49 +177,51 @@ hi! Cursor         guifg=#953B01 guibg=#77c3fa
 hi! link iCursor Cursor
 hi! link lCursor Cursor
 "hi! CursorColumn   .s:fmt_none   .s:fg_none   .s:bg_base02
-hi! CursorLine     guifg=None guibg=#28313a
-hi! CursorLineNR   gui=None guifg=#41505e guibg=None
-hi! DiffAdd        guifg=None guibg=#2A462C
+hi! CursorLine     guifg=NONE guibg=#28313a
+hi! CursorLineNR   gui=NONE guifg=#41505e guibg=NONE
+hi! DiffAdd        guifg=NONE guibg=#2A462C
 hi! link DiffChange DiffAdd
-hi! DiffDelete     guifg=None guibg=#562D32
+hi! DiffDelete     guifg=NONE guibg=#562D32
 "hi! DiffText       .s:fmt_bold   .s:fg_base01  .s:bg_none
 "hi! Directory      .s:fmt_none   .s:fg_green  .s:bg_none
-hi! ErrorMsg       gui=None guifg=#e27e8d guibg=None
-hi! EndOfBuffer    gui=None guifg=#1D252C guibg=None
+hi! ErrorMsg       gui=NONE guifg=#e27e8d guibg=NONE
+hi! EndOfBuffer    gui=NONE guifg=#1D252C guibg=NONE
 "hi! FoldColumn     .s:fmt_none   .s:fg_base0   .s:bg_base02
 "hi! Folded         .s:fmt_undb   .s:fg_base01  .s:bg_base02  .s:sp_base03
-hi! IncSearch      gui=None guifg=None guibg=#707B87
-hi! LineNr         gui=None guifg=#41505E guibg=None
-hi! MatchParen     gui=None guifg=None guibg=#4e6e99
+hi! IncSearch      gui=NONE guifg=NONE guibg=#707B87
+hi! LineNr         gui=NONE guifg=#41505E guibg=NONE
+hi! MatchParen     gui=NONE guifg=NONE guibg=#4e6e99
 "hi! ModeMsg        .s:fmt_none   .s:fg_blue   .s:bg_none
 "hi! MoreMsg        .s:fmt_none   .s:fg_blue   .s:bg_none
 "hi! NonText        .s:fmt_none   .s:fg_base01 .s:bg_none
-hi! Pmenu          gui=None guifg=#B7C5D3 guibg=#15232d
-hi! PmenuSbar      gui=None guifg=#2B3945 guibg=#15232d
-hi! PmenuSel       gui=None guifg=None    guibg=#28323a
+hi! Pmenu          gui=NONE guifg=#B7C5D3 guibg=#15232d
+hi! PmenuSbar      gui=NONE guifg=#2B3945 guibg=#15232d
+hi! PmenuSel       gui=NONE guifg=NONE    guibg=#28323a
 "hi! PmenuThumb     .s:fmt_none   .s:fg_base0  .s:bg_base03
 "hi! Question       .s:fmt_bold   .s:fg_cyan   .s:bg_none
-hi! Search         gui=None guifg=None guibg=#3A434C
+hi! Search         gui=NONE guifg=NONE guibg=#3A434C
 hi! link SignColumn Normal
 "hi! SpecialKey     .s:fmt_none   .s:fg_base01 .s:bg_none
 hi! SpellBad       gui=undercurl guisp=#e27e8d
 hi! link SpellCap SpellBad
 hi! link SpellLocal SpellBad
 hi! link SpellRare SpellBad
-hi! StatusLine     gui=None guifg=#b7c5d3 guibg=#171d23
+hi! StatusLine     gui=NONE guifg=#b7c5d3 guibg=#171d23
 hi! link StatusLineNC StatusLine
 hi! TabLine        gui=underline guifg=#b7c5d3 guibg=#171d23 guisp=#171d23
-hi! TabLineFill    gui=underline guifg=None guibg=#171d23 guisp=#171d23
-hi! TabLineSel     gui=None guifg=#fff guibg=#1D252C
-hi! TermCursor      gui=None guifg=#008B94 guibg=#008B94
-hi! Title          gui=bold guifg=#70E1E8 guibg=None
-hi! VertSplit      gui=None guifg=#1D252C guibg=None
+hi! TabLineFill    gui=underline guifg=NONE guibg=#171d23 guisp=#171d23
+hi! TabLineSel     gui=NONE guifg=#FFFFFF guibg=#1D252C
+hi! TermCursor      gui=NONE guifg=#008B94 guibg=#008B94
+hi! Title          gui=bold guifg=#70E1E8 guibg=NONE
+hi! VertSplit      gui=NONE guifg=#1D252C guibg=NONE
 hi! link Visual CursorLine
 "hi! VisualNOS      .s:fmt_stnd   .s:fg_none    .s:bg_base02 .s:fmt_revb
 "hi! WarningMsg     .s:fmt_bold   .s:fg_red     .s:bg_none
 hi! link WildMenu PmenuSel
 
 hi Terminal        guifg=#B7C5D3 guibg=#171d23
-autocmd TermOpen * setlocal winhighlight=Normal:Terminal
 
+if has('nvim')
+  autocmd TermOpen * setlocal winhighlight=Normal:Terminal
+endif
 endif
