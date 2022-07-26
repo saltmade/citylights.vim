@@ -22,7 +22,7 @@
 " black      #171d23  235 #262626  Grey15               
 " brblack    #41505e  239 #708090  SlateGray            
 " white      #b7c5d3  254 #b0c4de  LightSteelBlue       
-" brwhite    #FFFFFFfff  244 #FFFFFFfff  White                
+" brwhite    #FFFFFF  244 #FFFFFF  White                
 " cyan       #008b94   30 #008787  Turquoise4           
 " brcyan     #70e1e8   80 #5fd7d7  MediumTurquoise      
 " blue       #539afc   69 #5f87ff  CornflowerBlue       
